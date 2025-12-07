@@ -11,7 +11,7 @@ from sensor_msgs.msg import JointState
 import mujoco
 from mujoco.glfw import glfw
 
-MODEL_XML_PATH = "/home/oxyflour/projs/mjc-ros/data/franka_sim-master/franka_panda.xml"  # TODO: 改成你的模型路径
+MODEL_XML_PATH = "data/mujoco_menagerie-main/universal_robots_ur5e/ur5e.xml"  # TODO: 改成你的模型路径
 
 class MujocoRosBridge(Node):
     def __init__(self, model, data, joint_name_to_qpos: Dict[str, int]):

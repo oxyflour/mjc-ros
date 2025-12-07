@@ -1,12 +1,13 @@
 import mujoco
 import numpy as np
+import mitsuba as mi
 import os
 
 XML_OUT = "scene_mitsuba.xml"
 EXPORT_DIR = "mujoco_export"
 os.makedirs(EXPORT_DIR, exist_ok=True)
 
-model = mujoco.MjModel.from_xml_path("/home/oxyflour/projs/mjc-ros/data/franka_sim-master/franka_panda.xml")
+model = mujoco.MjModel.from_xml_path("data/mujoco_menagerie-main/universal_robots_ur5e/ur5e.xml")
 data = mujoco.MjData(model)
 
 def quat_to_mat(quat):
@@ -97,6 +98,10 @@ for i in range(model.ngeom):
 xml = f"""
 <scene version="3.0.0">
     <integrator type="path"/>
+    
+    <emitter type="constant">
+        <rgb name="radiance" value="1.0"/>
+    </emitter>
     
     <sensor type="perspective">
         <transform name="to_world">
